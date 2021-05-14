@@ -55,7 +55,7 @@
 // TODO(b/162887560): Rename to `checkbox-without-ripple-styles()`
 @mixin without-ripple($query: feature-targeting.all()) {
   // TODO(b/165005345): Include theme-styles() after static-styles().
-  @include theme-styles($query: $query);
+  @include theme-styles();
   @include static-styles($query: $query);
 }
 
@@ -153,11 +153,11 @@
   .mdc-checkbox--touch {
     @include checkbox-theme.touch-target(
       custom-properties.create(
-        checkbox-custom-properties.$touch-target-size,
+        checkbox-state-layer-size,
         touch-target-variables.$height
       ),
       custom-properties.create(
-        checkbox-custom-properties.$ripple-size,
+        checkbox-state-layer-size,
         checkbox-theme.$ripple-size
       ),
       $query: $query
@@ -204,9 +204,9 @@
 
 /// Checkbox theme styles.
 /// Checkbox styles that are customizable should go here.
-@mixin theme-styles($query: feature-targeting.all()) {
+@mixin theme-styles() {
   .mdc-checkbox {
-    @include checkbox-theme.theme(checkbox-theme.$light-theme, $query: $query);
+    @include checkbox-theme.theme-styles(checkbox-theme.$m2-theme);
   }
 }
 
